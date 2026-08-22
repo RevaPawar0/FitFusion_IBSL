@@ -1,0 +1,265 @@
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero-content {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .why-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievement-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .membership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    /* ---------- Navbar ---------- */
+
+    .navbar {
+        position: relative;
+        padding: 18px 7%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .join-btn {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: 0;
+
+        background: #0b0b0b;
+
+        padding: 15px 0;
+
+        text-align: center;
+
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0;
+        padding: 12px 0;
+    }
+
+    .nav-links a {
+        font-size: 17px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+        min-height: auto;
+        padding: 80px 7%;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .hero-text {
+        width: 100%;
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 1.05;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+
+    /* ---------- Section Headings ---------- */
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .section-heading span {
+        font-size: 15px;
+    }
+
+
+    /* ---------- Why POWERZONE ---------- */
+
+    .why-cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------- Achievements ---------- */
+
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------- Membership ---------- */
+
+    .membership-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------- Shop ---------- */
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------- Products ---------- */
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------- About ---------- */
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .about-text h2 {
+        font-size: 36px;
+    }
+
+
+    /* ---------- Instagram ---------- */
+
+    .instagram-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .instagram-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    /* ---------- Contact ---------- */
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
