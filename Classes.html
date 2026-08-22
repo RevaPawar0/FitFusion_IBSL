@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes & Programs | FIT FUSION</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --accent: #ff3b30;
+            --accent-hover: #e02d23;
+            --text-light: #ffffff;
+            --text-gray: #a0a5b1;
+            --border: #2a2e39;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover { background-color: var(--accent-hover); }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(15, 17, 21, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--text-light); }
+
+        /* Rich Page Header with Background Image */
+        .page-header {
+            padding: 180px 0 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15,17,21,0.85) 0%, rgba(15,17,21,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 15px; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .page-header p {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+            font-size: 1.15rem;
+        }
+
+        /* Header Quick Stats Bar */
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background-color: rgba(24, 27, 34, 0.85);
+            border: 1px solid var(--border);
+            padding: 12px 25px;
+            border-radius: 6px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-badge strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .stat-badge span {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Category Filter Pills */
+        .class-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-gray);
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .filter-pill.active, .filter-pill:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        /* Class Cards Grid */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .class-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .class-header { margin-bottom: 20px; }
+        .class-title { font-size: 1.5rem; color: var(--text-light); margin-bottom: 5px; }
+
+        .class-subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .class-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-dark);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .status-tag {
+            background-color: rgba(255, 59, 48, 0.2);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
+        .class-description { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; }
+
+        .target-audience {
+            background-color: rgba(255, 59, 48, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .faq-item h3 { font-size: 1.1rem; color: var(--text-light); margin-bottom: 12px; text-transform: none; }
+        .faq-item p { color: var(--text-gray); font-size: 0.95rem; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            cursor: pointer;
+        }
+
+        .close-modal:hover { color: var(--text-light); }
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--text-gray); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer { background-color: #08090b; padding: 60px 0 30px 0; color: var(--text-gray); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--text-light); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--text-light); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.2rem; }
+            .header-stats { gap: 15px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">FIT <span>FUSION</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">Why Us</a></li>
+                <li><a href="classes.html" class="active">Classes & Programs</a></li>
+                <li><a href="shop.html">Fitness Store</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+            </ul>
+            <button class="btn" onclick="openClassModal('General Trial Class')">Book a Class</button>
+        </div>
+    </nav>
+
+    <!-- Page Title Header with Visual Depth -->
+    <header class="page-header">
+        <div class="container">
+            <p class="section-subtitle">Train With Purpose</p>
+            <h1>Classes & Programs</h1>
+            <p>Led by certified elite coaches, engineered for visible transformations. Find the programming that matches your goals and push your boundaries.</p>
+            
+            <!-- Quick Credibility Badges -->
+            <div class="header-stats">
+                <div class="stat-badge">
+                    <strong>15+</strong>
+                    <span>Daily Sessions</span>
+                </div>
+                <div class="stat-badge">
+                    <strong>100%</strong>
+                    <span>Coach Guided</span>
+                </div>
+                <div class="stat-badge">
+                    <strong>Free</strong>
+                    <span>1st Trial Class</span>
+                </div>
+            </div>
+
+            <!-- Class Category Pills -->
+            <div class="class-filters">
+                <button class="filter-pill active" onclick="filterClasses('all', this)">All Programs</button>
+                <button class="filter-pill" onclick="filterClasses('hiit', this)">HIIT & Burn</button>
+                <button class="filter-pill" onclick="filterClasses('strength', this)">Strength & Power</button>
+                <button class="filter-pill" onclick="filterClasses('recovery', this)">Mobility & Recovery</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Classes Grid Section -->
+    <section id="classes">
+        <div class="container">
+            <div class="classes-grid" id="classGrid">
+
+                <!-- Class 1 -->
+                <div class="class-card" data-category="hiit">
+                    <div>
+                        <div class="class-header">
+                            <h2 class="class-title">Fusion Burn & Build</h2>
+                            <span class="class-subtitle">High-Intensity Functional Training</span>
+                        </div>
+                        <div class="class-meta">
+                            <span>⏱ 50 Mins | ⚡ All Levels</span>
+                            <span class="status-tag">3 Spots Left</span>
+                        </div>
+                        <p class="class-description">
+                            Our signature circuit class designed to maximize cardiovascular output while building lean muscle tissue. You will rotate through high-energy stations utilizing kettlebells, rowers, sleds, and bodyweight intervals.
+                        </p>
+                        <div class="target-audience">
+                            <strong>Perfect for:</strong> Anyone looking to shred fat, build endurance, and train in an energetic group environment.
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openClassModal('Fusion Burn & Build')">Book a Trial Class</button>
+                </div>
+
+                <!-- Class 2 -->
+                <div class="class-card" data-category="strength">
+                    <div>
+                        <div class="class-header">
+                            <h2 class="class-title">Iron & Alloy</h2>
+                            <span class="class-subtitle">Heavy Lifting & Strength Mastery</span>
+                        </div>
+                        <div class="class-meta">
+                            <span>⏱ 60 Mins | ⚡ Intermediate</span>
+                            <span class="status-tag">Almost Full</span>
+                        </div>
+                        <p class="class-description">
+                            A focused strength-training session built around fundamental compound movements like squats, deadlifts, and presses. Under strict coach supervision, you will focus on progressive overload safely.
+                        </p>
+                        <div class="target-audience">
+                            <strong>Perfect for:</strong> Lifters who want to get noticeably stronger, master technique, and drop body fat through resistance training.
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openClassModal('Iron & Alloy')">Book a Trial Class</button>
+                </div>
+
+                <!-- Class 3 -->
+                <div class="class-card" data-category="recovery">
+                    <div>
+                        <div class="class-header">
+                            <h2 class="class-title">Reset & Rebuild</h2>
+                            <span class="class-subtitle">Mobility, Flexibility & Recovery</span>
+                        </div>
+                        <div class="class-meta">
+                            <span>⏱ 45 Mins | ⚡ All Levels</span>
+                            <span class="status-tag">Open Slots</span>
+                        </div>
+                        <p class="class-description">
+                            Un-do the wear and tear of daily stress and intense workouts with dedicated mobility routines. This class blends joint-mobilization techniques, deep stretching, and core stability work.
+                        </p>
+                        <div class="target-audience">
+                            <strong>Perfect for:</strong> Athletes recovering from heavy training, desk workers with tight joints, or anyone wanting better movement quality.
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openClassModal('Reset & Rebuild')">Book a Trial Class</button>
+                </div>
+
+                <!-- Class 4 -->
+                <div class="class-card" data-category="hiit">
+                    <div>
+                        <div class="class-header">
+                            <h2 class="class-title">Velocity 30</h2>
+                            <span class="class-subtitle">Express High-Output Cardio</span>
+                        </div>
+                        <div class="class-meta">
+                            <span>⏱ 30 Mins | ⚡ High Intensity</span>
+                            <span class="status-tag">Fast Filling</span>
+                        </div>
+                        <p class="class-description">
+                            Short on time? Velocity 30 is a fast-paced, high-intensity cardio blast engineered to spike your heart rate in under half an hour. Zero wasted downtime—just focused interval blocks.
+                        </p>
+                        <div class="target-audience">
+                            <strong>Perfect for:</strong> Busy professionals needing a quick, efficient sweat session before work, during lunch, or post-shift.
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openClassModal('Velocity 30')">Book a Trial Class</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Beginner FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <p class="section-subtitle">Got Questions?</p>
+            <h2 class="section-title">Class FAQs for Beginners</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What should I bring to my first class?</h3>
+                    <p>Bring a bottle of water, a small sweat towel, and wear comfortable athletic clothes with supportive training shoes. We provide all equipment and hydration stations.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need to be in good shape before joining?</h3>
+                    <p>Not at all! Every single exercise in our classes can be scaled up or down by our coaches. Whether it is your day 1 or year 5, you will get a workout tailored to you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How early should I arrive before class starts?</h3>
+                    <p>Please arrive 10 to 15 minutes prior to your first class. This gives our coaches time to give you a tour, discuss any prior injuries, and help you get set up comfortably.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I book my trial class?</h3>
+                    <p>Click any "Book a Trial Class" button on this page, fill out your quick details, and select your preferred time slot!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="display:inline-block; margin-bottom: 15px;">FIT <span>FUSION</span></a>
+                    <p>Building stronger bodies and unstoppable mindsets every single day.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="classes.html">Classes & Programs</a></li>
+                        <li><a href="shop.html">Fitness Store</a></li>
+                        <li><a href="index.html#claim">Get Free Pass</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Location & Contact</h4>
+                    <p>123 Ironworks Boulevard<br>Metro District, NY 10001</p>
+                    <p style="margin-top: 10px;">Phone: +91 98765 43210<br>Email: info@fitfusiongym.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Operating Hours</h4>
+                    <p><strong>Staffed Hours:</strong><br>Mon–Fri: 6:00 AM – 9:00 PM<br>Sat–Sun: 8:00 AM – 4:00 PM</p>
+                    <p style="margin-top: 10px;"><strong>Member Access:</strong><br>24 Hours / 365 Days</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Fit Fusion Gym And Fitness store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Class Booking Modal -->
+    <div class="modal-overlay" id="classModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeClassModal()">&times;</span>
+            <h2 id="classModalTitle" style="margin-bottom: 10px; font-size: 1.5rem;">Book Trial Class</h2>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Reserve your spot in an upcoming session.</p>
+            <form id="classModalForm" onsubmit="submitClassForm(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time Slot</label>
+                    <select required>
+                        <option value="">Select time slot...</option>
+                        <option value="morning">Morning (6:30 AM - 7:20 AM)</option>
+                        <option value="noon">Midday (12:00 PM - 12:50 PM)</option>
+                        <option value="evening">Evening (6:00 PM - 6:50 PM)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Confirm Reservation</button>
+            </form>
+            <div id="classModalSuccess" style="display: none; text-align: center; padding: 20px 0;">
+                <h3 style="color: #4cd964; margin-bottom: 10px;">✓ Reservation Confirmed!</h3>
+                <p style="color: var(--text-gray);">We've reserved your spot! Check your email for class preparation details.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openClassModal(className) {
+            document.getElementById('classModalTitle').innerText = 'Book: ' + className;
+            document.getElementById('classModalForm').style.display = 'block';
+            document.getElementById('classModalSuccess').style.display = 'none';
+            document.getElementById('classModal').style.display = 'flex';
+        }
+
+        function closeClassModal() {
+            document.getElementById('classModal').style.display = 'none';
+        }
+
+        function submitClassForm(event) {
+            event.preventDefault();
+            document.getElementById('classModalForm').style.display = 'none';
+            document.getElementById('classModalSuccess').style.display = 'block';
+        }
+
+        function filterClasses(category, pillBtn) {
+            document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+            pillBtn.classList.add('active');
+
+            const cards = document.querySelectorAll('.class-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('classModal')) {
+                closeClassModal();
+            }
+        }
+    </script>
+</body>
+</html>

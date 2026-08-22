@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Store | FIT FUSION : Gym and fitness store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --accent: #ff3b30;
+            --accent-hover: #e02d23;
+            --text-light: #ffffff;
+            --text-gray: #a0a5b1;
+            --border: #2a2e39;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover { background-color: var(--accent-hover); }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-light);
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(15, 17, 21, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--text-light);
+            line-height: 1;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--text-light); }
+
+        .cart-btn-trigger {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Header */
+        .page-header {
+            padding: 160px 0 40px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15,17,21,0.7) 0%, rgba(15,17,21,1) 100%);
+        }
+
+        /* Filter Tabs */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-gray);
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-light);
+            background-color: rgba(255, 59, 48, 0.1);
+        }
+
+        /* Shop Grid & Product Cards */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .product-card:hover { 
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+            cursor: pointer;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+            opacity: 0.88;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-size: 1.15rem;
+            margin: 6px 0;
+            color: var(--text-light);
+        }
+
+        .product-price {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Cart Drawer */
+        .cart-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            z-index: 2000;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: var(--bg-card);
+            border-left: 1px solid var(--border);
+            z-index: 2001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+        }
+
+        .cart-drawer.open { right: 0; }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: var(--bg-dark);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .cart-item-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .subtotal-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 35px;
+            border-radius: 8px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+        }
+
+        .form-group { margin-bottom: 15px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            border-radius: 4px;
+        }
+
+        /* Image Lightbox Preview Modal */
+        .preview-modal-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .preview-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer { background-color: #08090b; padding: 60px 0 30px 0; color: var(--text-gray); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--text-light); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--text-light); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-container">
+                <span class="logo">FIT <span>FUSION</span></span>
+                <span class="logo-sub">Gym and fitness store</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="shop.html" class="active">Fitness Store</a></li>
+            </ul>
+            <button class="cart-btn-trigger" onclick="toggleCart()">
+                🛒 Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Commercial Grade Gear</h1>
+            <p style="color: var(--text-gray);">Equip your home or commercial space with the exact gear used inside FIT FUSION.</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section>
+        <div class="container">
+            
+            <!-- Category Filter Tabs -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterCategory('all', this)">All Products</button>
+                <button class="filter-btn" onclick="filterCategory('weights', this)">Free Weights</button>
+                <button class="filter-btn" onclick="filterCategory('cardio', this)">Cardio Gear</button>
+                <button class="filter-btn" onclick="filterCategory('accessories', this)">Accessories</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="shop-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Gear Cart</h3>
+            <span style="cursor: pointer; font-size: 1.5rem;" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="cart-items-list" id="cartItemsList"></div>
+        <div class="cart-footer">
+            <div class="subtotal-row">
+                <span>Total:</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <button class="btn" style="width: 100%;" onclick="openCheckoutModal()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="modal-overlay" id="imageModal">
+        <div class="modal-content preview-modal-content">
+            <span style="position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.5rem;" onclick="closeImageModal()">&times;</span>
+            <h3 id="previewTitle" style="color: var(--text-light);">Product Preview</h3>
+            <img id="previewImage" class="preview-image" src="" alt="Product Large View">
+            <p id="previewDesc" style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px;"></p>
+            <button class="btn" id="previewAddBtn" style="width: 100%;">Add To Cart</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <span style="position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.5rem;" onclick="closeCheckoutModal()">&times;</span>
+            <h2 style="margin-bottom: 15px;">Express Order</h2>
+            <form id="checkoutForm" onsubmit="processOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Aarav Sharma">
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" required placeholder="Flat 402, MG Road, Mumbai">
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select required>
+                        <option value="upi">UPI (GPay / PhonePe / Paytm)</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Pay Now & Complete Order</button>
+            </form>
+            <div id="orderSuccess" style="display: none; text-align: center; padding: 20px 0;">
+                <h3 style="color: #4cd964; margin-bottom: 10px;">✓ Order Placed!</h3>
+                <p style="color: var(--text-gray);">Your tracking invoice has been generated. Thank you for shopping with FIT FUSION!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo-container" style="margin-bottom: 15px;">
+                        <span class="logo">FIT <span>FUSION</span></span>
+                        <span class="logo-sub">Gym and fitness store</span>
+                    </a>
+                    <p>Building stronger bodies and unstoppable mindsets every single day.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="classes.html">Classes & Programs</a></li>
+                        <li><a href="shop.html">Fitness Store</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Location & Contact</h4>
+                    <p>123 Ironworks Boulevard<br>Metro District, NY 10001</p>
+                    <p style="margin-top: 10px;">Phone: +91 98765 43210<br>Email: info@fitfusiongym.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Operating Hours</h4>
+                    <p><strong>Staffed Hours:</strong><br>Mon–Fri: 6:00 AM – 9:00 PM<br>Sat–Sun: 8:00 AM – 4:00 PM</p>
+                    <p style="margin-top: 10px;"><strong>Member Access:</strong><br>24 Hours / 365 Days</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 FIT FUSION : Gym and fitness store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Equipment Dataset with Indian Rupee Prices
+        const products = [
+            { 
+                id: 1, 
+                name: "Urethane Dumbbell Set (2.5kg - 25kg)", 
+                category: "weights", 
+                price: 24999, 
+                desc: "Commercial grade round urethane dumbbells with anti-roll design.",
+                image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                id: 2, 
+                name: "Competition Olympic Barbell (20kg)", 
+                category: "weights", 
+                price: 14499, 
+                desc: "Heat-treated steel shaft with smooth needle bearing spin.",
+                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                id: 3, 
+                name: "Air Resistance Assault Bike", 
+                category: "cardio", 
+                price: 38999, 
+                desc: "Heavy-duty steel frame cardio bike with integrated LCD monitor.",
+                image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                id: 4, 
+                name: "Commercial Ski Ergometer", 
+                category: "cardio", 
+                price: 52000, 
+                desc: "Build endurance and core strength with precision air resistance.",
+                image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                id: 5, 
+                name: "Heavy-Duty Leather Lifting Belt", 
+                category: "accessories", 
+                price: 2499, 
+                desc: "10mm genuine leather lever belt for maximum lumbar support.",
+                image: "https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                id: 6, 
+                name: "High-Density Muscle Foam Roller", 
+                category: "accessories", 
+                price: 999, 
+                desc: "Deep tissue myofascial release roller for quick recovery.",
+                image: "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('fit_fusion_cart')) || [];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = items.map(p => `
+                <div class="product-card">
+                    <div class="product-image-container" onclick="openImageModal(${p.id})">
+                        <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <span class="product-category">${p.category}</span>
+                            <h3 class="product-title">${p.name}</h3>
+                            <p class="product-desc">${p.desc}</p>
+                        </div>
+                        <div>
+                            <div class="product-price">₹${p.price.toLocaleString('en-IN')}</div>
+                            <button class="btn" style="width: 100%; font-size: 0.85rem;" onclick="addToCart(${p.id})">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if(cat === 'all') renderProducts(products);
+            else renderProducts(products.filter(p => p.category === cat));
+        }
+
+        function openImageModal(id) {
+            const p = products.find(prod => prod.id === id);
+            document.getElementById('previewTitle').innerText = p.name;
+            document.getElementById('previewImage').src = p.image;
+            document.getElementById('previewDesc').innerText = p.desc;
+            
+            const btn = document.getElementById('previewAddBtn');
+            btn.onclick = function() {
+                addToCart(p.id);
+                closeImageModal();
+            };
+
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({...product, qty: 1});
+            }
+            saveAndUpdateCart();
+            toggleCart(true);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveAndUpdateCart();
+        }
+
+        function saveAndUpdateCart() {
+            localStorage.setItem('fit_fusion_cart', JSON.stringify(cart));
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').innerText = count;
+
+            const list = document.getElementById('cartItemsList');
+            if(cart.length === 0) {
+                list.innerHTML = `<p style="color: var(--text-gray); text-align: center; margin-top: 40px;">Your cart is empty.</p>`;
+            } else {
+                list.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4 style="font-size: 0.85rem; color: var(--text-light);">${item.name}</h4>
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">₹${item.price.toLocaleString('en-IN')} x ${item.qty}</span>
+                        </div>
+                        <button class="btn-secondary" style="padding: 4px 8px; border-radius: 4px; cursor: pointer;" onclick="removeFromCart(${item.id})">✕</button>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cartSubtotal').innerText = `₹${total.toLocaleString('en-IN')}`;
+        }
+
+        function toggleCart(openExplicit) {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            if(openExplicit || !drawer.classList.contains('open')) {
+                drawer.classList.add('open');
+                overlay.style.display = 'block';
+            } else {
+                drawer.classList.remove('open');
+                overlay.style.display = 'none';
+            }
+        }
+
+        function openCheckoutModal() {
+            if(cart.length === 0) return alert('Your cart is empty!');
+            toggleCart();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function processOrder(e) {
+            e.preventDefault();
+            document.getElementById('checkoutForm').style.display = 'none';
+            document.getElementById('orderSuccess').style.display = 'block';
+            cart = [];
+            saveAndUpdateCart();
+        }
+
+        window.onclick = function(e) {
+            if(e.target === document.getElementById('imageModal')) closeImageModal();
+            if(e.target === document.getElementById('checkoutModal')) closeCheckoutModal();
+        }
+
+        renderProducts(products);
+        saveAndUpdateCart();
+    </script>
+</body>
+</html>
