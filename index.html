@@ -1,974 +1,1017 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>POWERZONE</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerZone | Premier Gym & Sports Store | Shirdi, Maharashtra</title>
+  <meta name="description" content="PowerZone is Shirdi's premier dark-luxury athletic gym and official sports equipment store. 24/7 biometric access, Olympic lifting, cricket gear, turf shoes, and trophies on Nagar-Manmad Highway.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
 </head>
+<body data-theme="dark">
 
-<body>
+  <!-- ==================== SITE HEADER ==================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo" id="headerBrandLogo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="main">PowerZone</span>
+          <span class="sub">GYM & SPORTS STORE</span>
+        </div>
+      </a>
 
-  <header>
-    <nav class="navbar">
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="classes.html" class="nav-link">Training & Classes</a>
+        <a href="shop.html" class="nav-link">Sports Gear Store</a>
+        <a href="#workout-blueprint" class="nav-link">Workout Plan</a>
+        <a href="#radar-location" class="nav-link">Radar Location</a>
+      </nav>
 
-        <div class="logo">
-            POWER<span>ZONE</span>
+      <!-- Header Action Group -->
+      <div class="header-actions">
+        <!-- Theme Toggle Pill Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark or Light mode">
+          <span class="theme-icon-indicator">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+
+        <!-- User Authentication & Active Session Nav Container -->
+        <div id="authNavContainer" class="auth-nav-container">
+          <button class="btn btn-outline btn-sm auth-btn" id="navAuthBtn" onclick="window.pzAuth.openAuthModal('login')" aria-label="Sign In or Register">
+            <span class="auth-btn-icon">👤</span>
+            <span class="auth-btn-text">Sign In / Register</span>
+          </button>
         </div>
 
-        <ul class="nav-links">
-           <li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#membership">Membership</a></li>
-<li><a href="#shop">Shop</a></li>
-<li><a href="#contact">Contact</a></li>
-        </ul>
+        <button class="btn btn-primary btn-sm" data-open-pass-modal id="headerPassBtn">
+          Free 1-Day Pass
+        </button>
 
-        <a href="#membership" class="join-btn">
-    Join Now
-</a>
-<button class="menu-btn" id="menuBtn">
-    ☰
-</button>
-    </nav>
-</header>
-<!-- Hero Section -->
-<section class="hero" id="home">
+        <button class="cart-trigger-btn" id="headerCartBtn" aria-label="Open Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
 
-    <div class="hero-content">
-
-        <div class="hero-text">
-
-            <p class="hero-tag">POWERZONE FITNESS</p>
-
-            <h1>
-                BUILD YOUR
-                <span>STRONGEST</span>
-                SELF.
-            </h1>
-
-            <p class="hero-description">
-                Train harder. Stay stronger. Live better.
-                Join POWERZONE and take your fitness journey
-                to the next level.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#membership" class="primary-btn">
-    Join Now
-</a>
-                <a href="#shop" class="secondary-btn">
-    Explore Shop
-</a>
-            </div>
-
-        </div>
-
-        <div class="hero-image">
-
-            <img src="image/hero.jpg" alt="POWERZONE Gym">
-
-        </div>
-
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-</section>
-<!-- Why POWERZONE Section -->
+  <!-- Mobile Slide Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <!-- Mobile Auth Slot -->
+    <div id="mobileAuthContainer" class="mobile-auth-container" style="margin-bottom: 1.25rem;"></div>
 
-<section class="why-powerzone">
-
-    <div class="section-heading">
-
-        <p>WHY POWERZONE</p>
-
-        <h2>More Than Just A Gym</h2>
-
-        <span>
-            We help you build strength, confidence and a healthier lifestyle.
-        </span>
-
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="classes.html" class="nav-link">Training & Classes</a>
+      <a href="shop.html" class="nav-link">Sports Gear Store</a>
+      <a href="#workout-blueprint" class="nav-link">Workout Plan</a>
+      <a href="#radar-location" class="nav-link">Radar Location</a>
     </div>
-
-
-    <div class="why-cards">
-
-        <div class="why-card">
-
-            <div class="why-icon">💪</div>
-
-            <h3>Expert Training</h3>
-
-            <p>
-                Train with proper guidance and experienced fitness professionals.
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">🔥</div>
-
-            <h3>Powerful Community</h3>
-
-            <p>
-                Become part of a community that motivates you to push your limits.
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">🏆</div>
-
-            <h3>Results Driven</h3>
-
-            <p>
-                Stay consistent, track your progress and work towards your goals.
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">⚡</div>
-
-            <h3>Complete Fitness</h3>
-
-            <p>
-                Training, nutrition and fitness products — everything you need in one place.
-            </p>
-
-        </div>
-
+    <div>
+      <button class="btn btn-primary btn-glow" style="width: 100%; margin-bottom: 1rem;" data-open-pass-modal>
+        Claim Free Pass
+      </button>
+      <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        📍 Nagar-Manmad Highway, Shirdi
+      </p>
     </div>
+  </div>
 
-</section>
-<!-- Achievements Section -->
-
-<section class="achievements">
-
-    <div class="section-heading">
-
-        <p>POWERZONE IN NUMBERS</p>
-
-        <h2>Our Achievements</h2>
-
-        <span>
-            Built through dedication, consistency and a passion for fitness.
-        </span>
-
-    </div>
-
-
-    <div class="achievement-grid">
-
-        <div class="achievement-card">
-
-            <h3>10+</h3>
-
-            <p>Years of Experience</p>
-
+  <!-- ==================== HERO SECTION (2-COLUMN SPLIT GRID) ==================== -->
+  <section class="hero-section" id="hero">
+    <canvas id="ember-canvas"></canvas>
+    
+    <div class="container hero-split-grid">
+      <!-- Left Column: High-Impact Typography, Live Crowd Meter & Action -->
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span class="fire-icon">⚡</span> WELCOME TO POWERZONE SHIRDI
         </div>
-
-
-        <div class="achievement-card">
-
-            <h3>500+</h3>
-
-            <p>Happy Members</p>
-
-        </div>
-
-
-        <div class="achievement-card">
-
-            <h3>20+</h3>
-
-            <p>Fitness Events</p>
-
-        </div>
-
-
-        <div class="achievement-card">
-
-            <h3>15+</h3>
-
-            <p>Awards & Recognitions</p>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- Instagram Section -->
-
-<section class="instagram-section">
-
-    <div class="section-heading">
-
-        <p>FOLLOW POWERZONE</p>
-
-        <h2>Train With Us On Instagram</h2>
-
-        <span>
-            Follow POWERZONE for workouts, transformations,
-            events and the latest updates.
-        </span>
-
-    </div>
-
-    <div class="instagram-content">
-
-        <div class="instagram-icon">
-            📸
-        </div>
-
-        <h3>@powerzone</h3>
-
-        <p>
-            Follow us and stay connected with the POWERZONE community.
+        
+        <h1 class="hero-title">
+          STOP WISHING. <span class="text-gradient">START DOMINATING.</span>
+        </h1>
+        
+        <p class="hero-description">
+          Shirdi’s premier high-performance fitness sanctuary and authentic sports equipment store. Calibrated Olympic powerlifting, cricket conditioning, turf gear, and recovery suites on Nagar-Manmad Highway.
         </p>
 
-       <a href="https://www.instagram.com/mr_india_lokesh/"
-   class="instagram-btn"
-   target="_blank"
-   rel="noopener noreferrer">
-    Follow Us
-</a>
+        <!-- Live Gym Occupancy & Crowd Meter Widget -->
+        <div class="occupancy-widget">
+          <div class="occupancy-top-row">
+            <div class="occupancy-status-badge">
+              <span class="pulse-dot"></span>
+              <span id="occupancyStatusLabel">🟢 Optimal Lifting Window • 28% Floor Capacity</span>
+            </div>
+            <button type="button" class="occupancy-chart-toggle" id="toggleChartBtn">View Peak Hour Trends ▼</button>
+          </div>
+          <div class="occupancy-meter-bar">
+            <div class="occupancy-meter-fill" id="occupancyMeterFill" style="width: 28%;"></div>
+          </div>
+          <div class="peak-hours-chart" id="peakHoursChart"></div>
+        </div>
 
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-lg btn-glow" data-open-pass-modal id="heroClaimPassBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Claim Free Pass
+          </button>
+          <button class="btn btn-secondary btn-lg" data-open-bmi-modal id="heroBmiBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h4"/></svg>
+            Calculate BMI / Plan
+          </button>
+        </div>
+
+        <!-- Live Counters -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-counter-target="5000" data-counter-suffix="+">5k<span>+</span></div>
+            <div class="stat-label">Shirdi & Kopargaon Athletes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-counter-target="98" data-counter-suffix="%">98<span>%</span></div>
+            <div class="stat-label">Transformation Success</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-counter-target="15" data-counter-suffix="+">15<span>+</span></div>
+            <div class="stat-label">NIS & Certified Coaches</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Multi-Layered Visual Card & Floating Badges -->
+      <div class="hero-right">
+        <div class="hero-visual-card">
+          <span class="floating-top-badge">● 24/7 Biometric Access</span>
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="PowerZone Shirdi Gym Arena" loading="eager">
+          
+          <div style="position: absolute; top: 1.25rem; left: 1.25rem; background: var(--bg-glass-heavy); border: 1px solid var(--border-medium); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: var(--radius-full); padding: 0.35rem 0.85rem; font-size: 0.75rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 0.35rem; box-shadow: var(--shadow-sm); z-index: 3;">
+            🔥 1,200+ Workouts This Month
+          </div>
+
+          <div class="floating-gym-badge">
+            <div class="floating-badge-text">
+              <h4>🏋️‍♂️ PowerZone Arena</h4>
+              <p>Open 5:00 AM - 10:00 PM • Nagar-Manmad Hwy</p>
+            </div>
+            <span class="badge badge-crimson">Shirdi HQ</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-</section>
+  <!-- ==================== WHY US (CORE PILLARS) ==================== -->
+  <section class="section" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="dot"></span> ELITE ATHLETIC STANDARDS
+        </div>
+        <h2 class="section-title">WHY CHOOSE <span class="text-gradient">POWERZONE SHIRDI</span></h2>
+        <p class="section-subtitle">Bringing international fitness engineering and authentic sports tournament material right to Ahmednagar district.</p>
+      </div>
 
-<!-- Membership Section -->
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="why-title">24/7 Smart Biometric Entry</h3>
+          <p class="why-desc">Located conveniently on Nagar-Manmad Highway with secure fingerprint & keyless biometric entry anytime for busy professionals and athletes.</p>
+        </div>
 
-<section class="membership" id="membership">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M2 8h4M18 8h4M2 16h4M18 16h4M6 12h12"/></svg>
+          </div>
+          <h3 class="why-title">Competition Calibrated Iron</h3>
+          <p class="why-desc">Heavy-duty powerlifting racks, Olympic Cerakote barbells, competition rubber bumper plates, and dumbbells up to 40kg.</p>
+        </div>
 
-    <div class="section-heading">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3 class="why-title">Official Sports Gear & Trophies</h3>
+          <p class="why-desc">In-house sports store with Grade 1 Kashmir Willow bats, turf studs, badminton gear, and custom tournament trophies with local COD.</p>
+        </div>
 
-        <p>MEMBERSHIP</p>
-
-        <h2>Choose Your Plan</h2>
-
-        <span>
-            Find the membership that fits your fitness goals.
-        </span>
-
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="why-title">Steam & Cold Plunge Recovery</h3>
+          <p class="why-desc">Full-spectrum infrared steam saunas and filtered cold immersion tubs to flush lactic acid and accelerate matchday recovery.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="membership-grid">
+  <!-- ==================== OFFERINGS / TRAINING PILLARS ==================== -->
+  <section class="section" id="offerings" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="dot"></span> PROVEN DISCIPLINES
+        </div>
+        <h2 class="section-title">SIGNATURE <span class="text-gradient">TRAINING PROGRAMS</span></h2>
+        <p class="section-subtitle">Structured for maximum athletic endurance, raw powerlifting strength, and joint mobility.</p>
+      </div>
 
-        <div class="membership-card">
-
-            <h3>Basic</h3>
-
-            <div class="price">
-                ₹999 <span>/ month</span>
+      <div class="offerings-grid">
+        <!-- Card 1 -->
+        <div class="offering-card">
+          <div class="offering-img-wrap">
+            <span class="badge badge-crimson offering-badge-floating">Metabolic HIIT</span>
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&auto=format&fit=crop&q=80" alt="Burn and Build Workout">
+          </div>
+          <div class="offering-content">
+            <div class="offering-meta">
+              <span>⏱ 50 Mins</span>
+              <span>🔥 850 kcal</span>
+              <span>⚡ High</span>
             </div>
-
-            <ul>
-                <li>✓ Gym Access</li>
-                <li>✓ Basic Training</li>
-                <li>✓ Locker Facility</li>
-                <li>✓ Fitness Guidance</li>
-            </ul>
-
-            <a href="#" class="membership-btn">
-                Enquire Now
-            </a>
-
+            <h3 class="offering-title">Burn & Build</h3>
+            <p class="offering-desc">Metabolic conditioning combining SkiErgs, kettlebells, and dumbbell complexes to maximize athletic stamina.</p>
+            <a href="classes.html" class="btn btn-outline btn-sm">Explore Class Schedule →</a>
+          </div>
         </div>
 
-
-        <div class="membership-card featured">
-
-            <div class="popular">
-                MOST POPULAR
+        <!-- Card 2 -->
+        <div class="offering-card">
+          <div class="offering-img-wrap">
+            <span class="badge badge-gold offering-badge-floating">Raw Powerlifting</span>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop&q=80" alt="Iron and Alloy Lifting">
+          </div>
+          <div class="offering-content">
+            <div class="offering-meta">
+              <span>⏱ 60 Mins</span>
+              <span>🔥 600 kcal</span>
+              <span>⚡ Heavy</span>
             </div>
-
-            <h3>Premium</h3>
-
-            <div class="price">
-                ₹1,499 <span>/ month</span>
-            </div>
-
-            <ul>
-                <li>✓ Unlimited Gym Access</li>
-                <li>✓ Personal Training</li>
-                <li>✓ Diet Guidance</li>
-                <li>✓ Locker Facility</li>
-            </ul>
-<a href="#contact" class="membership-btn">
-    Enquire Now
-</a>
-
+            <h3 class="offering-title">Iron & Alloy</h3>
+            <p class="offering-desc">Pure barbell strength training focusing on the Big 3 compounds (Squat, Bench, Deadlift) and progressive overload.</p>
+            <a href="classes.html" class="btn btn-outline btn-sm">Explore Class Schedule →</a>
+          </div>
         </div>
 
-
-        <div class="membership-card">
-
-            <h3>Elite</h3>
-
-            <div class="price">
-                ₹1,999 <span>/ month</span>
+        <!-- Card 3 -->
+        <div class="offering-card">
+          <div class="offering-img-wrap">
+            <span class="badge badge-cyan offering-badge-floating">Mobility & Steam</span>
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80" alt="Reset and Rebuild Recovery">
+          </div>
+          <div class="offering-content">
+            <div class="offering-meta">
+              <span>⏱ 45 Mins</span>
+              <span>🔥 300 kcal</span>
+              <span>⚡ Restorative</span>
             </div>
-
-            <ul>
-                <li>✓ Unlimited Gym Access</li>
-                <li>✓ Personal Trainer</li>
-                <li>✓ Nutrition Plan</li>
-                <li>✓ Priority Support</li>
-            </ul>
-
-           <a href="#contact" class="membership-btn">
-    Enquire Now
-</a>
-
+            <h3 class="offering-title">Reset & Rebuild</h3>
+            <p class="offering-desc">Targeted myofascial release, joint decompression, breathwork, and infrared steam rejuvenation.</p>
+            <a href="classes.html" class="btn btn-outline btn-sm">Explore Class Schedule →</a>
+          </div>
         </div>
 
+        <!-- Card 4 -->
+        <div class="offering-card">
+          <div class="offering-img-wrap">
+            <span class="badge badge-green offering-badge-floating">Cricket & Turf Agility</span>
+            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&auto=format&fit=crop&q=80" alt="Velocity 30 Sprint">
+          </div>
+          <div class="offering-content">
+            <div class="offering-meta">
+              <span>⏱ 30 Mins</span>
+              <span>🔥 550 kcal</span>
+              <span>⚡ Extreme</span>
+            </div>
+            <h3 class="offering-title">Velocity 30</h3>
+            <p class="offering-desc">30-minute rapid plyometrics, sprint shuttle runs, and turf agility drills for local tournament athletes.</p>
+            <a href="classes.html" class="btn btn-outline btn-sm">Explore Class Schedule →</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-</section>
+  <!-- ==================== 2-CLICK WORKOUT GOAL GENERATOR ==================== -->
+  <section class="section" id="workout-blueprint">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="dot"></span> INSTANT ROUTINE GENERATOR
+        </div>
+        <h2 class="section-title">2-CLICK <span class="text-gradient">WORKOUT BLUEPRINT</span></h2>
+        <p class="section-subtitle">Pick your athletic objective to instantly generate your customized 3-day training split and tournament-ready gear pairing.</p>
+      </div>
 
-<!-- Shop Section -->
+      <div class="blueprint-card">
+        <div class="blueprint-tabs-group">
+          <button class="blueprint-tab-btn active" data-goal="fatloss">
+            <span>🔥 Fat Loss & Conditioning</span>
+          </button>
+          <button class="blueprint-tab-btn" data-goal="muscle">
+            <span>🏋️ Muscle Hypertrophy & Power</span>
+          </button>
+          <button class="blueprint-tab-btn" data-goal="cricket">
+            <span>🏏 Cricket & Turf Stamina</span>
+          </button>
+        </div>
 
-<section class="shop" id="shop">
-
-    <div class="section-heading">
-
-        <p>POWERZONE STORE</p>
-
-        <h2>Explore Our Store</h2>
-
-        <span>
-            Quality products to support your training and active lifestyle.
-        </span>
-
+        <div id="blueprintOutputContainer"></div>
+      </div>
     </div>
+  </section>
 
+  <!-- ==================== LOCAL SHIRDI & REGIONAL ATHLETE REVIEWS ==================== -->
+  <section class="section" id="transformations" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="dot"></span> REAL SHIRDI ATHLETES
+        </div>
+        <h2 class="section-title">LOCAL ATHLETE <span class="text-gradient">TRANSFORMATIONS</span></h2>
+        <p class="section-subtitle">Real feedback from athletes and fitness enthusiasts across Shirdi, Kopargaon, and Rahata.</p>
+      </div>
 
-    <div class="shop-grid">
-
-        <div class="shop-card">
-
-            <div class="shop-icon">
-                👕
+      <div class="transform-grid">
+        <!-- Review 1 -->
+        <div class="review-card glow-on-hover">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Rahul Gunjal" class="reviewer-avatar">
+            <div class="reviewer-meta">
+              <h4>Rahul Gunjal</h4>
+              <span class="reviewer-tag">Shirdi • District Powerlifting (83kg)</span>
             </div>
+          </div>
 
-            <h3>Gym Wear</h3>
+          <div class="rating-stars">★★★★★</div>
 
-            <p>
-                T-Shirts, pants, gloves and comfortable
-                workout clothing.
-            </p>
+          <p class="review-quote">
+            "Finding genuine competition bars and calibrated plates in Shirdi was impossible before PowerZone opened on Nagar-Manmad Highway. My deadlift skyrocketed from 185kg to 260kg with coach feedback."
+          </p>
 
-            <a href="#contact" class="shop-btn">
-    Enquire Now
-</a>
-
+          <div class="metrics-strip">
+            <div class="metric-box">
+              <div class="metric-val green">+75 kg</div>
+              <div class="metric-label">Deadlift PR</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">-8%</div>
+              <div class="metric-label">Body Fat</div>
+            </div>
+          </div>
         </div>
 
-
-        <div class="shop-card">
-
-            <div class="shop-icon">
-                💊
+        <!-- Review 2 -->
+        <div class="review-card glow-on-hover">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Priya Deshmukh" class="reviewer-avatar">
+            <div class="reviewer-meta">
+              <h4>Priya Deshmukh</h4>
+              <span class="reviewer-tag">Kopargaon • Cricket Academy All-Rounder</span>
             </div>
+          </div>
 
-            <h3>Supplements</h3>
+          <div class="rating-stars">★★★★★</div>
 
-            <p>
-                Quality supplements to support your
-                fitness and nutrition goals.
-            </p>
+          <p class="review-quote">
+            "The Velocity 30 agility conditioning and kettlebell circuits dramatically boosted my boundary fielding reaction and bowling stamina. Plus, their Kashmir Willow bats in the sports store are top grade!"
+          </p>
 
-            <a href="#" class="shop-btn">
-                Explore
-            </a>
-
+          <div class="metrics-strip">
+            <div class="metric-box">
+              <div class="metric-val green">+30%</div>
+              <div class="metric-label">Sprint Speed</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">-6.5 kg</div>
+              <div class="metric-label">Fat Loss</div>
+            </div>
+          </div>
         </div>
 
-
-        <div class="shop-card">
-
-            <div class="shop-icon">
-                🏀
+        <!-- Review 3 -->
+        <div class="review-card glow-on-hover">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Amit Shelke" class="reviewer-avatar">
+            <div class="reviewer-meta">
+              <h4>Amit Shelke</h4>
+              <span class="reviewer-tag">Shirdi • Marathon Runner & Business Owner</span>
             </div>
+          </div>
 
-            <h3>Sports Items</h3>
+          <div class="rating-stars">★★★★★</div>
 
-            <p>
-                Sports products and accessories for
-                your active lifestyle.
-            </p>
+          <p class="review-quote">
+            "I train at 6:00 AM before opening my business. The 24/7 biometric entry and the cold plunge + steam recovery suite keep my knees and joints fresh throughout the entire marathon training season."
+          </p>
 
-            <a href="#" class="shop-btn">
-                Explore
-            </a>
-
+          <div class="metrics-strip">
+            <div class="metric-box">
+              <div class="metric-val green">-8 Mins</div>
+              <div class="metric-label">10K Run Time</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">2x</div>
+              <div class="metric-label">Recovery Speed</div>
+            </div>
+          </div>
         </div>
-
+      </div>
     </div>
+  </section>
 
-</section>
+  <!-- ==================== HIGH-TECH GEO-RADAR LOCATION TERMINAL ==================== -->
+  <section class="section" id="radar-location">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="dot"></span> PRECISION GEO-RADAR NAVIGATION
+        </div>
+        <h2 class="section-title">POWERZONE RADAR & <span class="text-gradient">LOCATION TERMINAL</span></h2>
+        <p class="section-subtitle">Strategically positioned on the central Nagar-Manmad Highway artery in Shirdi with ample athlete parking.</p>
+      </div>
 
-<!-- Featured Products -->
-
-<section class="products">
-
-    <div class="section-heading">
-
-        <p>POWERZONE STORE</p>
-
-        <h2>Featured Products</h2>
-
-        <span>
-            Explore some of our popular products.
-        </span>
-
-    </div>
-
-
-    <div class="product-grid">
-
-        <!-- Product 1 -->
-
-        <div class="product-card">
-
-            <div class="product-image">
-                <span>👕</span>
-            </div>
-
-            <div class="product-info">
-
-                <p class="product-category">
-                    GYM WEAR
-                </p>
-
-                <h3>Performance T-Shirt</h3>
-
-                <p>
-                    Comfortable workout wear designed for training.
-                </p>
-
-                <a href="#contact" class="product-btn">
-                    Enquire Now
-                </a>
-
-            </div>
-
+      <div class="radar-terminal-box">
+        <div class="radar-terminal-header">
+          <div class="radar-beacon-pill">
+            <span class="radar-ping-dot"></span>
+            <span>LIVE BEACON: PowerZone Arena, Nagar-Manmad Rd, Shirdi</span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-display);">
+            COORDINATES: <strong>19.7663° N, 74.4762° E</strong> • PIN 423109
+          </div>
         </div>
 
+        <div class="radar-grid">
+          <!-- Interactive Map View -->
+          <div class="map-container-frame">
+            <iframe 
+              src="https://maps.google.com/maps?q=19.7663,74.4762&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              title="PowerZone Shirdi Gym Location Map" 
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
+          </div>
 
-        <!-- Product 2 -->
+          <!-- Landmark Distance Chips & Direct Terminal Actions -->
+          <div class="radar-info-pane">
+            <div>
+              <span class="badge badge-gold" style="margin-bottom: 0.5rem;">SHIRDI TRANSIT PROXIMITY</span>
+              <h3 style="font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.35rem;">Quick Transit Highlights</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">Click any landmark chip to check route highlights and directions:</p>
 
-        <div class="product-card">
-
-            <div class="product-image">
-                <span>👖</span>
+              <div class="landmark-chips-wrap">
+                <div class="landmark-chip" data-landmark="Shri Saibaba Samadhi Temple" data-time="4 mins">
+                  <span>📍 <strong>4 mins</strong> from Shri Saibaba Temple</span>
+                  <span class="time-tag">1.4 km →</span>
+                </div>
+                <div class="landmark-chip" data-landmark="Sainagar Shirdi Railway Station" data-time="7 mins">
+                  <span>🚆 <strong>7 mins</strong> from Sainagar Shirdi Station</span>
+                  <span class="time-tag">3.2 km →</span>
+                </div>
+                <div class="landmark-chip" data-landmark="Kopargaon / College & Sports Hub" data-time="12 mins">
+                  <span>🎓 <strong>12-15 mins</strong> from Kopargaon / College Hub</span>
+                  <span class="time-tag">11 km →</span>
+                </div>
+              </div>
             </div>
-
-            <div class="product-info">
-
-                <p class="product-category">
-                    GYM WEAR
-                </p>
-
-                <h3>Training Pants</h3>
-
-                <p>
-                    Comfortable and flexible pants for workouts.
-                </p>
-
-                <a href="#contact" class="product-btn">
-                    Enquire Now
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- Product 3 -->
-
-        <div class="product-card">
-
-            <div class="product-image">
-                <span>💊</span>
-            </div>
-
-            <div class="product-info">
-
-                <p class="product-category">
-                    SUPPLEMENTS
-                </p>
-
-                <h3>Fitness Supplement</h3>
-
-                <p>
-                    Nutrition products to support your fitness goals.
-                </p>
-
-                <a href="#contact" class="product-btn">
-                    Enquire Now
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- Product 4 -->
-
-        <div class="product-card">
-
-            <div class="product-image">
-                <span>🧤</span>
-            </div>
-
-            <div class="product-info">
-
-                <p class="product-category">
-                    ACCESSORIES
-                </p>
-
-                <h3>Training Gloves</h3>
-
-                <p>
-                    Comfortable gloves for a better training experience.
-                </p>
-
-                <a href="#contact" class="product-btn">
-                    Enquire Now
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Contact Section -->
-
-<section class="contact" id="contact">
-
-    <div class="section-heading">
-
-        <p>GET IN TOUCH</p>
-
-        <h2>Contact POWERZONE</h2>
-
-        <span>
-            Have questions about membership, products or training?
-            Get in touch with us.
-        </span>
-
-    </div>
-
-    <div class="contact-container">
-
-        <div class="contact-info">
-
-            <h3>Let's Connect</h3>
-
-            <p>
-                Contact POWERZONE for membership enquiries,
-                gym information and store products.
-            </p>
-
-            <div class="contact-item">
-                <strong>📍 Location</strong>
-                <p>POWERZONE Gym, Your City</p>
-            </div>
-
-            <div class="contact-item">
-                <strong>📞 Phone</strong>
-                <p>+91 XXXXX XXXXX</p>
-            </div>
-
-            <div class="contact-item">
-                <strong>✉️ Email</strong>
-                <p>powerzone@example.com</p>
-            </div>
-
-            <div class="contact-item">
-                <strong>📸 Instagram</strong>
-                <p>@powerzone</p>
-            </div>
-
-        </div>
-
-
-        <form class="contact-form" id="contactForm">
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <input
-                type="tel"
-                name="phone"
-                placeholder="Your Phone"
-                required
-            >
-
-            <textarea
-                name="message"
-                placeholder="Your Message"
-                rows="5"
-                required
-            ></textarea>
-
-            <button type="submit">
-                Send Enquiry
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-<!-- About POWERZONE Section -->
-
-<section class="about" id="about">
-
-    <div class="about-content">
-
-        <div class="about-image">
-
-            <img src="image/about-gym.jpg" alt="POWERZONE Gym">
-
-        </div>
-
-
-        <div class="about-text">
-
-            <p class="about-tag">
-                ABOUT POWERZONE
-            </p>
-
-            <h2>
-                Where Strength
-                Meets <span>Discipline.</span>
-            </h2>
-
-            <p>
-                POWERZONE is more than just a gym. We are a fitness
-                community focused on helping people become stronger,
-                healthier and more confident.
-            </p>
-
-            <p>
-                From professional training and fitness guidance to
-                gym wear, supplements and sports products, POWERZONE
-                brings everything together under one brand.
-            </p>
-
-            <a href="#" class="about-btn">
-                Know More
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Instagram Section -->
-
-<section class="instagram">
-
-    <div class="section-heading">
-
-        <p>FOLLOW POWERZONE</p>
-
-        <h2>Train With Us. Follow Our Journey.</h2>
-
-        <span>
-            Stay updated with workouts, achievements, events and the POWERZONE community.
-        </span>
-
-    </div>
-
-    <div class="instagram-header">
-
-        <div class="instagram-profile">
-            <div class="instagram-logo">◎</div>
 
             <div>
-                <h3>@powerzone</h3>
-                <p>POWERZONE FITNESS</p>
-            </div>
-        </div>
+              <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; color: var(--text-muted);">
+                🚗 <strong style="color: var(--text-primary);">Member Parking:</strong> Dedicated ground-floor 2-wheeler and 4-wheeler parking with 24/7 CCTV surveillance.
+              </div>
 
-        <a href="https://www.instagram.com/mr_india_lokesh/"
-   target="_blank"
-   rel="noopener noreferrer">
-    Instagram
-</a>
+              <div class="radar-action-group">
+                <a href="https://maps.google.com/?q=19.7663,74.4762" target="_blank" rel="noopener" class="btn btn-primary btn-glow">
+                  🧭 Open GPS Navigation
+                </a>
+                <a href="tel:+919422201823" class="btn btn-secondary">
+                  📞 Call Desk (+91 94222 01823)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="instagram-grid">
-
-        <div class="instagram-card">
-            <div>📸</div>
-        </div>
-
-        <div class="instagram-card">
-            <div>🏋️</div>
-        </div>
-
-        <div class="instagram-card">
-            <div>💪</div>
-        </div>
-
-        <div class="instagram-card">
-            <div>🏆</div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Contact Section -->
-
-<section class="contact">
-
-    <div class="section-heading">
-
-        <p>GET IN TOUCH</p>
-
-        <h2>Visit POWERZONE</h2>
-
-        <span>
-            Have questions about memberships, products or training?
-            Get in touch with us.
-        </span>
-
-    </div>
-
-    <div class="contact-content">
-
-        <div class="contact-info">
-
-            <div class="contact-item">
-                <div class="contact-icon">📍</div>
-
-                <div>
-                    <h3>Our Location</h3>
-                    <p>POWERZONE Gym, Your City, Maharashtra</p>
-                </div>
-            </div>
-
-
-            <div class="contact-item">
-                <div class="contact-icon">📞</div>
-
-                <div>
-                    <h3>Call Us</h3>
-                    <p>+91 XXXXX XXXXX</p>
-                </div>
-            </div>
-
-
-            <div class="contact-item">
-                <div class="contact-icon">📧</div>
-
-                <div>
-                    <h3>Email</h3>
-                    <p>powerzone@example.com</p>
-                </div>
-            </div>
-
-
-            <div class="contact-item">
-                <div class="contact-icon">📸</div>
-
-                <div>
-                    <h3>Instagram</h3>
-                    <p>@powerzone</p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="contact-form">
-
-            <h3>Send Us a Message</h3>
-
-            <form>
-
-                <input
-                    type="text"
-                    placeholder="Your Name"
-                    required
-                >
-
-                <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    required
-                >
-
-                <input
-                    type="email"
-                    placeholder="Email Address"
-                >
-
-                <select>
-                    <option value="">What are you interested in?</option>
-                    <option>Gym Membership</option>
-                    <option>Gym Wear</option>
-                    <option>Supplements</option>
-                    <option>Sports Items</option>
-                </select>
-
-                <textarea
-                    rows="5"
-                    placeholder="Your Message"
-                ></textarea>
-
-                <button type="submit">
-                    Send Enquiry
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- Footer -->
-
-<footer class="footer">
-
-    <div class="footer-content">
-
-        <div class="footer-brand">
-
-            <div class="logo">
-                POWER<span>ZONE</span>
-            </div>
-
-            <p>
-                Train hard. Stay strong. Live better.
-            </p>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h3>Quick Links</h3>
-
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Membership</a>
-            <a href="#">Shop</a>
-            <a href="#">Contact</a>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h3>Shop</h3>
-
-            <a href="#">Gym Wear</a>
-            <a href="#">Supplements</a>
-            <a href="#">Sports Items</a>
-
-        </div>
-
-
-        <div class="footer-social">
-
-            <h3>Follow Us</h3>
-
-            <p>@powerzone</p>
-
-            <a href="#" class="footer-instagram">
-                Instagram
+  <!-- ==================== CTA BANNER SECTION ==================== -->
+  <section class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-banner-content">
+          <span class="badge badge-gold" style="margin-bottom: 1rem;">SHIRDI EXCLUSIVE PASS</span>
+          <h2>READY TO EXPERIENCE <span class="text-gradient">POWERZONE SHIRDI?</span></h2>
+          <p>Join over 5,000 athletes who chose elite training, sports science, and premium facilities. Claim your complimentary 1-Day All-Access Pass now.</p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg btn-glow" data-open-pass-modal>
+              Get Free 1-Day Pass Now
+            </button>
+            <a href="shop.html" class="btn btn-secondary btn-lg">
+              Explore Sports Gear Store
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ==================== SITE FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="brand-text">
+              <span class="main">PowerZone</span>
+              <span class="sub">GYM & SPORTS STORE</span>
+            </div>
+          </a>
+          <p>Shirdi’s ultimate athletic training hub and certified sports gear store. Located on Nagar-Manmad Highway, Shirdi, Maharashtra 423109.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+            <a href="#" class="social-link" aria-label="WhatsApp">WA</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+          </div>
         </div>
 
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 POWERZONE. All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
-<script src="js/script.js"></script>
-
-
-<!-- Instagram Section -->
-
-<section class="instagram-section">
-
-    <div class="section-heading">
-
-        <p>FOLLOW POWERZONE</p>
-
-        <h2>Train With Us On Instagram</h2>
-
-        <span>
-            Follow POWERZONE for workouts, transformations,
-            events and the latest updates.
-        </span>
-
-    </div>
-
-    <div class="instagram-content">
-
-        <div class="instagram-icon">
-            📸
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Training & Classes</a>
+            <a href="shop.html">Sports Equipment Store</a>
+            <a href="#workout-blueprint">2-Click Workout Split</a>
+            <a href="#radar-location">Radar Location & GPS Map</a>
+            <a href="#transformations">Shirdi Athlete Stories</a>
+          </div>
         </div>
 
-        <h3>@powerzone</h3>
+        <div class="footer-col">
+          <h4>Shirdi Club Hours</h4>
+          <div class="footer-links" style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.8;">
+            <p><strong style="color: var(--text-primary);">Biometric Gym:</strong> 24 Hours / 7 Days</p>
+            <p><strong style="color: var(--text-primary);">Sports Store:</strong> 8:00 AM - 10:00 PM</p>
+            <p><strong style="color: var(--text-primary);">Coaching Hours:</strong> 6:00 AM - 9:30 PM</p>
+            <p><strong style="color: var(--primary);">Steam Suite:</strong> 7:00 AM - 9:00 PM</p>
+          </div>
+        </div>
 
-        <p>
-            Follow us and stay connected with the POWERZONE community.
-        </p>
+        <div class="footer-col footer-newsletter">
+          <h4>Shirdi Sports Club</h4>
+          <p>Subscribe for local cricket match updates, tournament trophy announcements, and flash gear discounts.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email or WhatsApp" required>
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
 
-        <a href="#" class="instagram-btn">
-            Follow Us
-        </a>
+      <div class="footer-bottom">
+        <div>© 2026 PowerZone : Gym & Sports Store. Nagar-Manmad Highway, Shirdi, Maharashtra 423109.</div>
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <a href="#" style="color: var(--text-muted);">Privacy Policy</a>
+          <a href="#" style="color: var(--text-muted);">Store Terms</a>
+          <a href="#" style="color: var(--text-muted);">COD Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. FREE PASS MODAL -->
+  <div class="modal-backdrop" id="freePassModal">
+    <div class="modal-box">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      
+      <div id="freePassFormWrap">
+        <span class="badge badge-crimson" style="margin-bottom: 0.5rem;">100% FREE ALL-ACCESS</span>
+        <h2 class="modal-title">CLAIM 1-DAY PASS</h2>
+        <p class="modal-subtitle">Experience our full biometric gym floor, Olympic barbells, and steam recovery suite with zero obligations.</p>
+
+        <form id="freePassForm">
+          <div class="form-group">
+            <label class="form-label" for="passName">Full Legal Name</label>
+            <input type="text" id="passName" class="form-control" placeholder="e.g. Rahul Gunjal" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="passEmail">Email Address</label>
+              <input type="email" id="passEmail" class="form-control" placeholder="rahul@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="passPhone">WhatsApp Number</label>
+              <input type="tel" id="passPhone" class="form-control" placeholder="+91 98765 43210">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="passBranch">Select Branch</label>
+              <select id="passBranch" class="form-control">
+                <option value="PowerZone Shirdi Central (Nagar-Manmad Hwy)">Shirdi Central (Nagar-Manmad Hwy)</option>
+                <option value="PowerZone Kopargaon Sports Arena">Kopargaon Sports Arena (Station Rd)</option>
+                <option value="PowerZone Rahata Fitness Hub">Rahata Fitness Hub</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="passDate">Workout Date</label>
+              <input type="date" id="passDate" class="form-control">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;">
+            Generate Instant PowerZone Pass
+          </button>
+        </form>
+      </div>
+
+      <div id="freePassResultWrap" style="display: none;"></div>
+    </div>
+  </div>
+
+  <!-- 2. WORKOUT FINDER QUIZ MODAL -->
+  <div class="modal-backdrop" id="workoutQuizModal">
+    <div class="modal-box">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      
+      <!-- Quiz Step 1 -->
+      <div class="quiz-step active" id="quizStep1">
+        <span class="badge badge-gold">QUESTION 1 OF 3</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">What is your primary training goal?</h2>
+        <p class="modal-subtitle">Select the outcome that matters most to your athletic journey.</p>
+        
+        <div class="quiz-options-grid">
+          <button class="quiz-opt-btn" data-step="1" data-value="burn">
+            <span>🔥 Rapid Fat Loss & High Calorie Burn</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="1" data-value="strength">
+            <span>🏋️ Raw Barbell Powerlifting & Muscle Hypertrophy</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="1" data-value="recovery">
+            <span>🧘 Joint Mobility, Decompression & Steam Recovery</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="1" data-value="speed">
+            <span>⚡ Cricket & Sports Match Turf Agility (30-Min)</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Step 2 -->
+      <div class="quiz-step" id="quizStep2">
+        <span class="badge badge-gold">QUESTION 2 OF 3</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">What is your experience level?</h2>
+        <p class="modal-subtitle">We tailor movement progressions to your current fitness level.</p>
+        
+        <div class="quiz-options-grid">
+          <button class="quiz-opt-btn" data-step="2" data-value="beginner">
+            <span>🌱 Beginner (New or returning to training)</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="2" data-value="intermediate">
+            <span>💪 Intermediate (Train 2-3x weekly regularly)</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="2" data-value="advanced">
+            <span>🏆 Advanced Athlete (Club / Competitive Sports)</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Step 3 -->
+      <div class="quiz-step" id="quizStep3">
+        <span class="badge badge-gold">QUESTION 3 OF 3</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">Preferred training atmosphere?</h2>
+        <p class="modal-subtitle">Choose the training vibe that motivates you most.</p>
+        
+        <div class="quiz-options-grid">
+          <button class="quiz-opt-btn" data-step="3" data-value="high-energy">
+            <span>🔊 High-BPM Energy, Music & Group Conditioning</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="3" data-value="focused-iron">
+            <span>🎯 Laser-Focused Heavy Iron & Technical Lifting</span>
+            <span>→</span>
+          </button>
+          <button class="quiz-opt-btn" data-step="3" data-value="zen-recovery">
+            <span>🧊 Mindful Deep Mobility, Sauna & Steam Rebalance</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Result Step -->
+      <div class="quiz-step" id="quizStepResult">
+        <span class="badge badge-crimson">RECOMMENDED PROGRAM</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">Your Ideal PowerZone Class</h2>
+        <div id="quizMatchOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CART SLIDE-OVER DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Sports Gear Cart
+      </h3>
+      <button class="close-btn" id="closeCartBtn" aria-label="Close Cart">✕</button>
     </div>
 
-</section>
-<button id="backToTop" class="back-to-top">
-    ↑
-</button>
+    <div class="cart-items-list" id="cartItemsList"></div>
+
+    <div class="cart-footer">
+      <div class="promo-row">
+        <input type="text" id="promoCodeInput" class="promo-input" placeholder="Promo code (e.g. POWERZONE20)">
+        <button class="btn btn-secondary btn-sm" id="applyPromoBtn">Apply</button>
+      </div>
+
+      <div class="cart-breakdown" id="cartBreakdown"></div>
+
+      <button class="btn btn-primary" id="checkoutDrawerBtn" style="width: 100%;">
+        Proceed to Checkout (COD Available)
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. PROFESSIONAL CHECKOUT & COD MODAL -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-box">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      
+      <div id="checkoutFormWrap">
+        <span class="badge badge-crimson">EXPRESS CHECKOUT</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">Order Confirmation</h2>
+        <p class="modal-subtitle">Delivery across Shirdi, Kopargaon & Ahmednagar district or free pickup at Shirdi store.</p>
+
+        <div id="checkoutSummaryContent"></div>
+
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label class="form-label" for="checkoutName">Full Name *</label>
+            <input type="text" id="checkoutName" class="form-control" placeholder="e.g. Rahul Gunjal" required minlength="2">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="checkoutPhone">WhatsApp Mobile Number (10 Digits) *</label>
+              <input type="tel" id="checkoutPhone" class="form-control" placeholder="e.g. 9876543210" required pattern="[6-9][0-9]{9}" maxlength="10" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkoutCity">Town / City *</label>
+              <input type="text" id="checkoutCity" class="form-control" placeholder="Shirdi / Kopargaon" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="checkoutAddress">Complete Address & Landmark *</label>
+              <input type="text" id="checkoutAddress" class="form-control" placeholder="House/Flat No, Landmark, Street" required minlength="5">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkoutPincode">Pincode (6 Digits) *</label>
+              <input type="text" id="checkoutPincode" class="form-control" placeholder="423109" required pattern="[0-9]{6}" maxlength="6" title="Please enter a valid 6-digit postal pincode.">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Payment Mode</label>
+            <div class="payment-radio-group">
+              <label class="payment-radio-option selected">
+                <input type="radio" name="paymentMethod" value="cod" checked>
+                <div>
+                  <strong style="color: var(--text-primary);">💵 Cash on Delivery (COD) / Pay at Shirdi Store</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Pay cash or scan QR when your gear arrives at your doorstep</div>
+                </div>
+              </label>
+              <label class="payment-radio-option">
+                <input type="radio" name="paymentMethod" value="upi">
+                <div>
+                  <strong style="color: var(--text-primary);">⚡ Instant UPI (GPay / PhonePe / Paytm)</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Instant zero-fee transfer to PowerZone Official Merchant</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%;">
+            Place Order & Confirm Delivery
+          </button>
+        </form>
+      </div>
+
+      <div id="checkoutSuccessWrap" style="display: none;"></div>
+    </div>
+  </div>
+
+  <!-- 5. INTERACTIVE BMI & CALORIE CALCULATOR MODAL -->
+  <div class="modal-backdrop" id="bmiCalculatorModal">
+    <div class="modal-box">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      <span class="badge badge-crimson">SMART FITNESS ASSESSMENT</span>
+      <h2 class="modal-title" style="margin-top: 0.5rem;">BMI & Calorie Calculator</h2>
+      <p class="modal-subtitle">Instant athletic assessment and tailored PowerZone Shirdi training program recommendation.</p>
+
+      <form id="bmiCalculatorForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="bmiWeight">Weight (in kg) *</label>
+            <input type="number" step="0.5" id="bmiWeight" class="form-control" placeholder="e.g. 72" required min="25" max="250">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bmiHeight">Height (in cm) *</label>
+            <input type="number" step="0.5" id="bmiHeight" class="form-control" placeholder="e.g. 175" required min="90" max="250">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="bmiAge">Age (Years)</label>
+            <input type="number" id="bmiAge" class="form-control" placeholder="e.g. 24" value="25" min="12" max="90">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bmiActivity">Daily Activity Level</label>
+            <select id="bmiActivity" class="form-control">
+              <option value="sedentary">Sedentary (Desk Job, Minimal Exercise)</option>
+              <option value="moderate" selected>Moderate (2-3 Gym Sessions Weekly)</option>
+              <option value="athlete">High / Athlete (Cricket/Powerlifting/Daily)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;">
+          Calculate My Athletic Blueprint
+        </button>
+      </form>
+
+      <div id="bmiResultContainer" style="display: none;"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 6. CLEAN CUSTOMER AUTHENTICATION MODAL ==================== -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-box auth-modal-box">
+      <button class="modal-close-icon" onclick="window.pzAuth.closeAuthModal()" aria-label="Close modal">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div class="logo-icon" style="margin: 0 auto 0.75rem auto; width: 42px; height: 42px; background: var(--primary-subtle); border: 1px solid var(--border-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h2 class="modal-title" style="font-size: 1.5rem; margin-bottom: 0.25rem;">WELCOME TO POWERZONE</h2>
+        <p class="modal-subtitle" style="margin-bottom: 0;">Sign in or join to access your sports orders, VIP passes & personalized starter kit.</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="auth-tab-bar">
+        <button type="button" class="auth-tab-btn active" id="authTabLoginBtn" onclick="window.pzAuth.switchAuthTab('login')">
+          Sign In
+        </button>
+        <button type="button" class="auth-tab-btn" id="authTabSignupBtn" onclick="window.pzAuth.switchAuthTab('signup')">
+          Join PowerZone
+        </button>
+      </div>
+
+      <!-- TAB 1: LOG IN -->
+      <div id="authLoginTabContent">
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="loginIdentifier">Email Address or 10-Digit Mobile *</label>
+            <input type="text" id="loginIdentifier" class="form-control" placeholder="e.g. rahul@example.com or 9876543210" required autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="password-reveal-btn" onclick="window.togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;" id="loginSubmitBtn">
+            Sign In to PowerZone
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
+          New to PowerZone? <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;" onclick="window.pzAuth.switchAuthTab('signup')">Create Account & Get Free Diet Plan</a>
+        </div>
+      </div>
+
+      <!-- TAB 2: SIGN UP -->
+      <div id="authSignupTabContent" style="display: none;">
+        <form id="authSignupForm">
+          <div class="form-group">
+            <label class="form-label" for="regFullName">Full Legal Name *</label>
+            <input type="text" id="regFullName" class="form-control" placeholder="e.g. Vikram Joshi" required minlength="2" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regMobile">10-Digit Indian Mobile Number *</label>
+            <input type="tel" id="regMobile" class="form-control" placeholder="e.g. 9860123456" required pattern="[6-9][0-9]{9}" maxlength="10" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." autocomplete="tel">
+            <div id="regMobileHelper" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Must be 10 digits starting with 6, 7, 8, or 9</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" for="regDiet">Dietary Preference *</label>
+              <select id="regDiet" class="form-control" required>
+                <option value="Pure Vegetarian" selected>🌱 Pure Vegetarian</option>
+                <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                <option value="Both / Flexible">⚡ Both / Flexible</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regGoal">Training Goal *</label>
+              <select id="regGoal" class="form-control" required>
+                <option value="Muscle Building / Bulk" selected>🏋️ Muscle Building / Bulk</option>
+                <option value="Fat Loss & Shredding">🔥 Fat Loss & Shredding</option>
+                <option value="General Fitness & Athletic Stamina">⚡ General Fitness & Stamina</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regEmail">Email Address *</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="e.g. vikram@example.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Create Password (Min 6 chars) *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="regPassword" class="form-control" placeholder="Create a secure password" required minlength="6" autocomplete="new-password">
+              <button type="button" class="password-reveal-btn" onclick="window.togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;" id="regSubmitBtn">
+            Create Account & Get Free Diet Plan
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
+          Already have an account? <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;" onclick="window.pzAuth.switchAuthTab('login')">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 7. USER DASHBOARD & ORDERS MODAL ==================== -->
+  <div class="modal-backdrop" id="userOrdersModal">
+    <div class="modal-box" style="max-width: 680px;">
+      <button class="modal-close-icon" onclick="window.pzAuth.closeUserOrdersModal()" aria-label="Close modal">✕</button>
+      <div id="userOrdersModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Supabase Official JS SDK & PowerZone Central Database Module -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>
+
+

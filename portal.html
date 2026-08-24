@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerZone | Store Owner Management Portal & CRM</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
+  <style>
+    .portal-body {
+      background: var(--bg-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .portal-nav {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-medium);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .portal-auth-container {
+      max-width: 440px;
+      margin: 4rem auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg), 0 0 35px var(--primary-subtle);
+      text-align: center;
+    }
+    .portal-dashboard-container {
+      max-width: 1240px;
+      margin: 2rem auto 4rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    .portal-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .portal-kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .portal-kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+    }
+    .portal-kpi-card.gold::before { background: var(--secondary); }
+    .portal-kpi-card.green::before { background: var(--accent-green); }
+    .portal-kpi-card.cyan::before { background: var(--accent-cyan); }
+    .kpi-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .kpi-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .stock-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all var(--transition-fast);
+    }
+    .stock-card:hover {
+      border-color: var(--primary-border);
+    }
+    .stock-card-img {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: var(--bg-secondary);
+    }
+    .stock-toggle-btn {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .stock-toggle-btn.in-stock {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+    }
+    .stock-toggle-btn.out-stock {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid #ef4444;
+    }
+  </style>
+</head>
+<body class="portal-body" data-theme="dark">
+
+  <!-- ==================== PORTAL TOP NAVIGATION ==================== -->
+  <header class="portal-nav">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <div class="logo-icon" style="background: var(--primary-subtle); border: 1px solid var(--border-glow); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div>
+          <span style="font-family: var(--font-display); font-weight: 900; font-size: 1.25rem; color: var(--text-primary); letter-spacing: -0.02em;">PowerZone</span>
+          <span class="badge badge-crimson" style="margin-left: 0.5rem; vertical-align: middle;">STORE TERMINAL</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Theme Toggle Pill Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark or Light mode">
+          <span class="theme-icon-indicator">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+
+        <a href="shop.html" target="_blank" class="btn btn-outline btn-sm">
+          View Public Store ↗
+        </a>
+
+        <button class="btn btn-secondary btn-sm" id="portalLogoutBtn" style="display: none;" onclick="window.pzPortal.logout()">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 1. ADMIN AUTHENTICATION GATEKEEPER ==================== -->
+  <div id="portalAuthView" class="container">
+    <div class="portal-auth-container">
+      <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--primary-subtle); border: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto; font-size: 1.5rem; color: var(--primary);">
+        ⚡
+      </div>
+      <h2 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.35rem;">Store Owner Terminal</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.75rem;">Authorized access only. Enter Admin PIN or store credentials to manage orders and stock.</p>
+
+      <form id="portalLoginForm">
+        <div class="form-group">
+          <label class="form-label" for="portalPin">Quick 4-Digit PIN or Email</label>
+          <input type="text" id="portalPin" class="form-control" placeholder="Enter PIN (e.g. 1234) or admin email" required autofocus autocomplete="username">
+        </div>
+
+        <div class="form-group" id="portalPasswordWrap">
+          <label class="form-label" for="portalPassword">Admin Password (If using email)</label>
+          <input type="password" id="portalPassword" class="form-control" placeholder="Enter admin password (or leave blank for PIN)" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;">
+          Unlock Management Terminal
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding: 0.75rem; background: var(--bg-card); border: 1px dashed var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--text-secondary);">
+        <strong>Quick Access:</strong> PIN is <code style="color: var(--primary); font-weight: 700;">1234</code> or credentials <code style="color: var(--secondary); font-weight: 700;">admin@powerzone.in / admin123</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. STORE OWNER DASHBOARD VIEW ==================== -->
+  <main id="portalDashboardView" class="portal-dashboard-container" style="display: none;">
+    
+    <!-- Top Action Row -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 style="font-size: 1.85rem; color: var(--text-primary); margin-bottom: 0.25rem;">Store Operations & Live CRM</h1>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Real-time dispatch status, customer orders, gym leads & catalog stock control.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button class="btn btn-secondary btn-sm" onclick="window.pzPortal.addDemoOrder()">+ Quick Demo Order</button>
+        <button class="btn btn-outline btn-sm" onclick="window.PowerZoneDB.exportDatabaseJSON()">⬇ Export JSON</button>
+      </div>
+    </div>
+
+    <!-- Live Business KPI Grid -->
+    <div class="portal-kpi-grid">
+      <div class="portal-kpi-card">
+        <div class="kpi-number" id="kpiRevenue">₹0</div>
+        <div class="kpi-title">Total Store Revenue</div>
+      </div>
+      <div class="portal-kpi-card gold">
+        <div class="kpi-number" id="kpiOrders">0</div>
+        <div class="kpi-title">Sports Gear Orders</div>
+      </div>
+      <div class="portal-kpi-card cyan">
+        <div class="kpi-number" id="kpiPending" style="color: var(--primary);">0</div>
+        <div class="kpi-title">Pending Dispatches</div>
+      </div>
+      <div class="portal-kpi-card green">
+        <div class="kpi-number" id="kpiLeads">0</div>
+        <div class="kpi-title">Gym VIP Leads & Trials</div>
+      </div>
+    </div>
+
+    <!-- Section Tabs -->
+    <div class="admin-tab-bar" style="margin-bottom: 1.5rem;">
+      <button class="admin-tab-btn active" data-tab="ordersTab" onclick="window.pzPortal.switchTab('ordersTab')">
+        📦 Orders & Dispatch (<span id="countOrders">0</span>)
+      </button>
+      <button class="admin-tab-btn" data-tab="passesTab" onclick="window.pzPortal.switchTab('passesTab')">
+        🎟 Gym VIP Passes (<span id="countPasses">0</span>)
+      </button>
+      <button class="admin-tab-btn" data-tab="trialsTab" onclick="window.pzPortal.switchTab('trialsTab')">
+        🏋️ Class Trial Bookings (<span id="countTrials">0</span>)
+      </button>
+      <button class="admin-tab-btn" data-tab="stockTab" onclick="window.pzPortal.switchTab('stockTab')">
+        🏷️ Quick Stock Control (<span id="countStock">12</span>)
+      </button>
+    </div>
+
+    <!-- TAB 1: ORDERS & DISPATCH TABLE -->
+    <div id="ordersTab" class="portal-tab-content" style="display: block;">
+      <div class="admin-table-wrapper" style="max-height: 540px;">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer & WhatsApp</th>
+              <th>Destination (City & PIN)</th>
+              <th>Items & Amount</th>
+              <th>Payment</th>
+              <th>Live Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: GYM VIP PASSES TABLE -->
+    <div id="passesTab" class="portal-tab-content" style="display: none;">
+      <div class="admin-table-wrapper" style="max-height: 540px;">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>Pass ID</th>
+              <th>Athlete Name</th>
+              <th>Contact & WhatsApp</th>
+              <th>Selected Branch</th>
+              <th>Workout Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="passesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: TRIAL CLASS BOOKINGS TABLE -->
+    <div id="trialsTab" class="portal-tab-content" style="display: none;">
+      <div class="admin-table-wrapper" style="max-height: 540px;">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Client Name</th>
+              <th>Contact & WhatsApp</th>
+              <th>Class Discipline</th>
+              <th>Coach & Time Slot</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="trialsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 4: QUICK STOCK CONTROL -->
+    <div id="stockTab" class="portal-tab-content" style="display: none;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.25rem;">Live Sports Catalog Stock Overrides</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Toggle items between <strong>In Stock</strong> and <strong>Out of Stock</strong>. Changes update on the public store immediately.</p>
+      </div>
+
+      <div class="stock-grid" id="stockGridContainer"></div>
+    </div>
+
+  </main>
+
+  <!-- Javascript Core & Live Supabase Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerZone | Sports Equipment Store | Shirdi, Maharashtra</title>
+  <meta name="description" content="Official PowerZone Sports Store on Nagar-Manmad Highway, Shirdi. Buy Kashmir willow cricket bats, turf shoes, tournament trophies, powerlifting belts, and badminton gear with Cash on Delivery (COD).">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
+</head>
+<body data-theme="dark">
+
+  <!-- ==================== SITE HEADER ==================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo" id="headerBrandLogo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="main">PowerZone</span>
+          <span class="sub">GYM & SPORTS STORE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="classes.html" class="nav-link">Training & Classes</a>
+        <a href="shop.html" class="nav-link active">Sports Gear Store</a>
+        <a href="#promos" class="nav-link">Club Offers</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Theme Toggle Pill Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark or Light mode">
+          <span class="theme-icon-indicator">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+
+        <!-- User Authentication & Active Session Nav Container -->
+        <div id="authNavContainer" class="auth-nav-container">
+          <button class="btn btn-outline btn-sm auth-btn" id="navAuthBtn" onclick="window.pzAuth.openAuthModal('login')" aria-label="Sign In or Register">
+            <span class="auth-btn-icon">👤</span>
+            <span class="auth-btn-text">Sign In / Register</span>
+          </button>
+        </div>
+
+        <button class="cart-trigger-btn" id="headerCartBtn" aria-label="Open Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <!-- Mobile Auth Slot -->
+    <div id="mobileAuthContainer" class="mobile-auth-container" style="margin-bottom: 1.25rem;"></div>
+
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="classes.html" class="nav-link">Training & Classes</a>
+      <a href="shop.html" class="nav-link active">Sports Gear Store</a>
+      <a href="#promos" class="nav-link">Club Offers</a>
+    </div>
+    <div>
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="window.pzCart.openDrawer()">
+        View Cart
+      </button>
+      <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        Cash on Delivery across Shirdi & Ahmednagar
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== SHOP HERO ==================== -->
+  <section class="shop-hero">
+    <div class="container">
+      <div class="section-tag">
+        <span class="dot"></span> OFFICIAL SHIRDI SPORTS STORE
+      </div>
+      <h1>AUTHENTIC SPORTS <span class="text-gradient">EQUIPMENT & GEAR</span></h1>
+      <p class="section-subtitle" style="max-width: 680px; margin: 1rem auto 0 auto;">
+        From Kashmir Willow cricket bats and turf shoes to powerlifting lever belts and custom tournament trophies with local Cash on Delivery (COD).
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== PROMO TICKER BANNER ==================== -->
+  <div class="container" id="promos" style="margin-bottom: 2rem;">
+    <div style="background: linear-gradient(90deg, var(--primary-subtle), var(--secondary-subtle)); border: 1px dashed var(--primary-border); border-radius: var(--radius-md); padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="badge badge-crimson">SHIRDI CLUB OFFER</span>
+        <span style="font-size: 0.9rem; color: var(--text-primary);">Use coupon code <strong style="color: var(--primary);">POWERZONE20</strong> at checkout for <strong>20% OFF</strong> all sports gear!</span>
+      </div>
+      <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">⚡ Free Same-Day Pickup at Shirdi Store</span>
+    </div>
+  </div>
+
+  <!-- ==================== SHOP TOOLBAR & CATALOG ==================== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      
+      <!-- Toolbar Filter & Search -->
+      <div class="shop-toolbar">
+        <div class="shop-categories">
+          <button class="shop-cat-btn active" data-cat="all">All Sports</button>
+          <button class="shop-cat-btn" data-cat="cricket">Cricket</button>
+          <button class="shop-cat-btn" data-cat="badminton">Badminton</button>
+          <button class="shop-cat-btn" data-cat="football">Football & Turf</button>
+          <button class="shop-cat-btn" data-cat="gym">Gym Iron & Belts</button>
+          <button class="shop-cat-btn" data-cat="trophies">Trophies</button>
+          <button class="shop-cat-btn" data-cat="accessories">Accessories</button>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; flex-grow: 1; justify-content: flex-end;">
+          <input type="text" id="shopSearchInput" class="form-control" placeholder="🔍 Search bats, shoes, belts..." style="max-width: 260px; padding: 0.45rem 0.85rem; font-size: 0.85rem;">
+          
+          <div class="shop-sort-wrap">
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Sort:</span>
+            <select id="shopSortSelect" class="shop-sort-select">
+              <option value="featured">Featured Picks</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sports Product Grid Container (Populated by js/main.js & js/cart.js) -->
+      <div class="shop-grid" id="shopGridContainer">
+        <!-- Rendered by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SITE FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="brand-text">
+              <span class="main">PowerZone</span>
+              <span class="sub">GYM & SPORTS STORE</span>
+            </div>
+          </a>
+          <p>Shirdi’s ultimate athletic training hub and certified sports gear store. Located on Nagar-Manmad Highway, Shirdi, Maharashtra 423109.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+            <a href="#" class="social-link" aria-label="WhatsApp">WA</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Training & Classes</a>
+            <a href="shop.html">Sports Equipment Store</a>
+            <a href="index.html#radar-location">Radar Location & GPS Map</a>
+            <a href="#promos">Special Offers & Codes</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Store Policy</h4>
+          <div class="footer-links" style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.8;">
+            <p><strong style="color: var(--text-primary);">Cash on Delivery:</strong> Available</p>
+            <p><strong style="color: var(--text-primary);">Shirdi Pickup:</strong> Ready in 1 Hour</p>
+            <p><strong style="color: var(--text-primary);">Trophy Customization:</strong> 24-48 Hours</p>
+            <p><strong style="color: var(--primary);">Authenticity:</strong> 100% Genuine</p>
+          </div>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h4>Tournament Alerts</h4>
+          <p>Get notified about upcoming local cricket leagues, badminton tournaments, and flash gear discounts.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter email or WhatsApp" required>
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 PowerZone : Gym & Sports Store. Nagar-Manmad Highway, Shirdi, Maharashtra 423109.</div>
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <a href="#" style="color: var(--text-muted);">COD Terms</a>
+          <a href="#" style="color: var(--text-muted);">Warranty Info</a>
+          <a href="#" style="color: var(--text-muted);">Return Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & DRAWER ==================== -->
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="quickViewModal">
+    <div class="modal-box" style="max-width: 650px;">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      <div id="quickViewContent"></div>
+    </div>
+  </div>
+
+  <!-- CART SLIDE-OVER DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Sports Gear Cart
+      </h3>
+      <button class="close-btn" id="closeCartBtn" aria-label="Close Cart">✕</button>
+    </div>
+
+    <div class="cart-items-list" id="cartItemsList"></div>
+
+    <div class="cart-footer">
+      <div class="promo-row">
+        <input type="text" id="promoCodeInput" class="promo-input" placeholder="Promo code (e.g. POWERZONE20)">
+        <button class="btn btn-secondary btn-sm" id="applyPromoBtn">Apply</button>
+      </div>
+
+      <div class="cart-breakdown" id="cartBreakdown"></div>
+
+      <button class="btn btn-primary" id="checkoutDrawerBtn" style="width: 100%;">
+        Proceed to Checkout (COD Available)
+      </button>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL CHECKOUT & COD MODAL -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-box">
+      <button class="modal-close-icon" aria-label="Close modal">✕</button>
+      
+      <div id="checkoutFormWrap">
+        <span class="badge badge-crimson">EXPRESS CHECKOUT</span>
+        <h2 class="modal-title" style="margin-top: 0.5rem;">Order Confirmation</h2>
+        <p class="modal-subtitle">Express delivery across Shirdi, Kopargaon & Ahmednagar or free pickup at Shirdi store.</p>
+
+        <div id="checkoutSummaryContent"></div>
+
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label class="form-label" for="checkoutName">Full Name *</label>
+            <input type="text" id="checkoutName" class="form-control" placeholder="e.g. Rahul Gunjal" required minlength="2">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="checkoutPhone">WhatsApp Mobile Number (10 Digits) *</label>
+              <input type="tel" id="checkoutPhone" class="form-control" placeholder="e.g. 9876543210" required pattern="[6-9][0-9]{9}" maxlength="10" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkoutCity">Town / City *</label>
+              <input type="text" id="checkoutCity" class="form-control" placeholder="Shirdi / Kopargaon" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="checkoutAddress">Complete Address & Landmark *</label>
+              <input type="text" id="checkoutAddress" class="form-control" placeholder="House/Flat No, Landmark, Street" required minlength="5">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkoutPincode">Pincode (6 Digits) *</label>
+              <input type="text" id="checkoutPincode" class="form-control" placeholder="423109" required pattern="[0-9]{6}" maxlength="6" title="Please enter a valid 6-digit postal pincode.">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Payment Mode</label>
+            <div class="payment-radio-group">
+              <label class="payment-radio-option selected">
+                <input type="radio" name="paymentMethod" value="cod" checked>
+                <div>
+                  <strong style="color: var(--text-primary);">💵 Cash on Delivery (COD) / Pay at Shirdi Store</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Pay cash or scan QR when your gear arrives at your doorstep</div>
+                </div>
+              </label>
+              <label class="payment-radio-option">
+                <input type="radio" name="paymentMethod" value="upi">
+                <div>
+                  <strong style="color: var(--text-primary);">⚡ Instant UPI (GPay / PhonePe / Paytm)</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Instant zero-fee transfer to PowerZone Official Merchant</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%;">
+            Place Order & Confirm Delivery
+          </button>
+        </form>
+      </div>
+
+      <div id="checkoutSuccessWrap" style="display: none;"></div>
+    </div>
+  </div>
+
+  <!-- ==================== CLEAN CUSTOMER AUTHENTICATION MODAL ==================== -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-box auth-modal-box">
+      <button class="modal-close-icon" onclick="window.pzAuth.closeAuthModal()" aria-label="Close modal">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div class="logo-icon" style="margin: 0 auto 0.75rem auto; width: 42px; height: 42px; background: var(--primary-subtle); border: 1px solid var(--border-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h2 class="modal-title" style="font-size: 1.5rem; margin-bottom: 0.25rem;">WELCOME TO POWERZONE</h2>
+        <p class="modal-subtitle" style="margin-bottom: 0;">Sign in or join to access your sports orders, VIP passes & personalized starter kit.</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="auth-tab-bar">
+        <button type="button" class="auth-tab-btn active" id="authTabLoginBtn" onclick="window.pzAuth.switchAuthTab('login')">
+          Sign In
+        </button>
+        <button type="button" class="auth-tab-btn" id="authTabSignupBtn" onclick="window.pzAuth.switchAuthTab('signup')">
+          Join PowerZone
+        </button>
+      </div>
+
+      <!-- TAB 1: LOG IN -->
+      <div id="authLoginTabContent">
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="loginIdentifier">Email Address or 10-Digit Mobile *</label>
+            <input type="text" id="loginIdentifier" class="form-control" placeholder="e.g. rahul@example.com or 9876543210" required autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="password-reveal-btn" onclick="window.togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;" id="loginSubmitBtn">
+            Sign In to PowerZone
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
+          New to PowerZone? <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;" onclick="window.pzAuth.switchAuthTab('signup')">Create Account & Get Free Diet Plan</a>
+        </div>
+      </div>
+
+      <!-- TAB 2: SIGN UP -->
+      <div id="authSignupTabContent" style="display: none;">
+        <form id="authSignupForm">
+          <div class="form-group">
+            <label class="form-label" for="regFullName">Full Legal Name *</label>
+            <input type="text" id="regFullName" class="form-control" placeholder="e.g. Vikram Joshi" required minlength="2" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regMobile">10-Digit Indian Mobile Number *</label>
+            <input type="tel" id="regMobile" class="form-control" placeholder="e.g. 9860123456" required pattern="[6-9][0-9]{9}" maxlength="10" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." autocomplete="tel">
+            <div id="regMobileHelper" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Must be 10 digits starting with 6, 7, 8, or 9</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" for="regDiet">Dietary Preference *</label>
+              <select id="regDiet" class="form-control" required>
+                <option value="Pure Vegetarian" selected>🌱 Pure Vegetarian</option>
+                <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                <option value="Both / Flexible">⚡ Both / Flexible</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regGoal">Training Goal *</label>
+              <select id="regGoal" class="form-control" required>
+                <option value="Muscle Building / Bulk" selected>🏋️ Muscle Building / Bulk</option>
+                <option value="Fat Loss & Shredding">🔥 Fat Loss & Shredding</option>
+                <option value="General Fitness & Athletic Stamina">⚡ General Fitness & Stamina</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regEmail">Email Address *</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="e.g. vikram@example.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Create Password (Min 6 chars) *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="regPassword" class="form-control" placeholder="Create a secure password" required minlength="6" autocomplete="new-password">
+              <button type="button" class="password-reveal-btn" onclick="window.togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 0.5rem;" id="regSubmitBtn">
+            Create Account & Get Free Diet Plan
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
+          Already have an account? <a href="javascript:void(0)" style="color: var(--primary); font-weight: 700;" onclick="window.pzAuth.switchAuthTab('login')">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== USER DASHBOARD & ORDERS MODAL ==================== -->
+  <div class="modal-backdrop" id="userOrdersModal">
+    <div class="modal-box" style="max-width: 680px;">
+      <button class="modal-close-icon" onclick="window.pzAuth.closeUserOrdersModal()" aria-label="Close modal">✕</button>
+      <div id="userOrdersModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Supabase Official JS SDK & PowerZone Central Database Module -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
